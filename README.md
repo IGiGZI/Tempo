@@ -1,18 +1,50 @@
-# React + Vite
+# ⏱️ Stopwatch App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clean, minimalist stopwatch built with React, Vite, and Tailwind CSS — created as a hands-on project to practice core React concepts like `useRef`, component structure, and state management.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Start / Pause / Reset stopwatch with seconds and centiseconds precision
+- Lap tracking
+- Reset confirmation to prevent accidental resets
+- Save completed timers to a history view
+- Minimalist, responsive UI
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- **React** (Vite)
+- **Tailwind CSS**
+- *(Add here once decided: React Router, React Query, backend/DB, etc.)*
 
-Note: This will impact Vite dev & build performances.
+## 🚀 Getting Started
 
-## Expanding the ESLint configuration
+Clone the repo and install dependencies:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+git clone https://github.com/IGiGZI/<your-repo-name>.git
+cd <your-repo-name>
+npm install
+npm run dev
+```
+
+The app will be running locally at `http://localhost:5173` (or whichever port Vite assigns).
+
+## 📸 Screenshots
+
+*(Add a screenshot or GIF of the app here once the UI is finalized)*
+
+## 🌐 Live Demo
+
+*(Add your Vercel deployment link here once live)*
+
+## 📚 What I Learned / Practiced
+
+- `useRef` for timer logic
+- Component composition (pages vs. components structure)
+- React Portals (reset confirmation modal)
+- Tailwind CSS setup and theming
+- *(Add React Query notes here if you end up using it for the history feature)*
+
+## 📄 License
+
+*(Optional — add a license if you want, e.g. MIT)*
