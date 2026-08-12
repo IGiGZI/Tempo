@@ -10,7 +10,7 @@
 
 @font-face {
 	font-family: "Outfit";
-	src: url("./assets/fonts/outfit/staic/Outfit-Medium.woff2") format("woff2");
+	src: url("./assets/fonts/outfit/static/Outfit-Medium.woff2") format("woff2");
 	font-weight: 500;
 	font-style: normal;
 	font-display: swap;
@@ -18,7 +18,7 @@
 
 @font-face {
 	font-family: "Outfit";
-	src: url("./assets/fonts/outfit/staic/Outfit-SemiBold.woff2") format("woff2");
+	src: url("./assets/fonts/outfit/static/Outfit-SemiBold.woff2") format("woff2");
 	font-weight: 600;
 	font-style: normal;
 	font-display: swap;
@@ -26,7 +26,7 @@
 
 @font-face {
 	font-family: "Outfit";
-	src: url("./assets/fonts/outfit/staic/Outfit-Bold.woff2") format("woff2");
+	src: url("./assets/fonts/outfit/static/Outfit-Bold.woff2") format("woff2");
 	font-weight: 700;
 	font-style: normal;
 	font-display: swap;
@@ -42,10 +42,14 @@ body {
 	color: #ffffff;
 }
 
+
+
 /* 
 Color palette:
   #000000
   #ffffff
+	#454545
+	#707070
 
 Fonts: 
   Outfit
