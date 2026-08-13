@@ -1,19 +1,20 @@
-# ⏱️ Stopwatch App
+# ⏱️ Tempo
 
-A clean, minimalist stopwatch built with React, Vite, and Tailwind CSS — created as a hands-on project to practice core React concepts like `useRef`, component structure, and state management.
+A clean, minimalist stopwatch built with React, Vite, and Tailwind CSS — created as a hands-on project to practice core React concepts, component structure, and optimization.
 
 ## ✨ Features
 
 - Start / Pause / Reset stopwatch with seconds and centiseconds precision
-- Lap tracking
-- Reset confirmation to prevent accidental resets
-- Save completed timers to a history view
+- Lap tracking (pending)
+- Save completed timers to a history view (pending)
 - Minimalist, responsive UI
 
 ## 🛠️ Tech Stack
 
 - **React** (Vite)
 - **Tailwind CSS**
+- **Node.js + Express server backend (pending)**
+- **MongoDB database (pending)**
 - *(Add here once decided: React Router, React Query, backend/DB, etc.)*
 
 ## 🚀 Getting Started
@@ -21,8 +22,8 @@ A clean, minimalist stopwatch built with React, Vite, and Tailwind CSS — creat
 Clone the repo and install dependencies:
 
 ```bash
-git clone https://github.com/IGiGZI/<your-repo-name>.git
-cd <your-repo-name>
+git clone https://github.com/IGiGZI/Tempo.git
+cd tempo
 npm install
 npm run dev
 ```
@@ -40,11 +41,11 @@ The app will be running locally at `http://localhost:5173` (or whichever port Vi
 ## 📚 What I Learned / Practiced
 
 - `useRef` for timer logic
-- Component composition (pages vs. components structure)
-- React Portals (reset confirmation modal)
-- Tailwind CSS setup and theming
+- Component composition
+- React Portals (pending)
+- General programming logic skills
 - *(Add React Query notes here if you end up using it for the history feature)*
 
-## 📄 License
+<!-- ## 📄 License
 
-*(Optional — add a license if you want, e.g. MIT)*
+*(Optional — add a license if you want, e.g. MIT)* -->

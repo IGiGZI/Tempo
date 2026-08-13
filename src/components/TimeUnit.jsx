@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { useRef } from "react";
-
 
 function TimeUnit() {
 	const [timeState, setTimeState] = useState(0);
@@ -8,6 +7,37 @@ function TimeUnit() {
 
 	const elapsedTime = useRef();
 	const timeInterval = useRef();
+
+	const timeUnitsArray = [
+		{
+			label: "HOURS",
+			timeFn: (t) => {
+				t = Math.floor(t / 1000 / (60 * 60));
+				return t.toString().padStart(2, "0");
+			},
+		},
+		{
+			label: "MINUTES",
+			timeFn: (t) => {
+				t = Math.floor((timeState / 1000 / 60) % 60);
+				return t.toString().padStart(2, "0");
+			},
+		},
+		{
+			label: "SECONDS",
+			timeFn: (t) => {
+				t = Math.floor((timeState / 1000) % 60);
+				return t.toString().padStart(2, "0");
+			},
+		},
+		{
+			label: "CENTISEC",
+			timeFn: (t) => {
+				t = Math.floor((timeState % 1000) / 10);
+				return t.toString().padStart(2, "0");
+			},
+		},
+	];
 
 	function handleStart() {
 		// This fixes the double start issue logically
@@ -61,55 +91,37 @@ function TimeUnit() {
 		<>
 			<div>
 				<div className="flex items-center justify-center gap-6 mb-6">
-					<div>
-						<p>
-							{Math.floor(timeState / 1000 / (60 * 60))
-								.toString()
-								.padStart(2, "0")}
-						</p>
-						<p className="text-xl">HOURS</p>
-					</div>
-					<p>:</p>
-					<div>
-						<p>
-							{Math.floor((timeState / 1000 / 60) % 60)
-								.toString()
-								.padStart(2, "0")}
-						</p>
-						<p className="text-xl">MINUTES</p>
-					</div>
-					<p>:</p>
-					<div>
-						<p>
-							{Math.floor((timeState / 1000) % 60)
-								.toString()
-								.padStart(2, "0")}
-						</p>
-						<p className="text-xl">SECONDS</p>
-					</div>
-					<p>:</p>
-					<div>
-						<p>
-							{Math.floor((timeState % 1000) / 10)
-								.toString()
-								.padStart(2, "0")}
-						</p>
-						<p className="text-xl">CENTISECONDS</p>
-					</div>
+					{timeUnitsArray.map((element, index) => {
+						return (
+							<Fragment key={element.label}>
+								<div>
+									<p>{element.timeFn(timeState)}</p>
+									<p className="text-xl">{element.label}</p>
+								</div>
+								{index < timeUnitsArray.length - 1 && <p>:</p>}
+							</Fragment>
+						);
+					})}
 				</div>
 
-				<button
-					onClick={handleStart}
-					className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer disabled:cursor-not-allowed disabled:bg-[#707070]"
-				>
-					{isTimeRunning === false ? "Start" : "Running"}
-				</button>
-				<button
-					onClick={handleStop}
-					className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer"
-				>
-					Stop
-				</button>
+				{!isTimeRunning && (
+					<button
+						onClick={handleStart}
+						className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer"
+					>
+						Start
+					</button>
+				)}
+
+				{isTimeRunning && (
+					<button
+						onClick={handleStop}
+						className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer"
+					>
+						Stop
+					</button>
+				)}
+
 				<button
 					onClick={() => {
 						console.log(`RESET CLICKED`);
