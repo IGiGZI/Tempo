@@ -10,18 +10,27 @@ function TimeUnit() {
 	const timeInterval = useRef();
 
 	function handleStart() {
-		let startTime;
-
-		if (elapsedTime.current > 0)
-		{
-			startTime = Date.now() - elapsedTime.current
-		} else {
-			startTime = Date.now()
+		// This fixes the double start issue logically
+		if (isTimeRunning === true){
+			return
 		}
 
-		// Testing as if the counter had started 2 hours ago
-		// const startTime = Date.now() - 7198000;
 
+		console.log(`handleStart CLICKED`);
+		
+		let startTime;
+
+		// Fixing 2 running intervals logically & calculating the new startTime after stopping
+		if (elapsedTime.current > 0) {
+			startTime = Date.now() - elapsedTime.current;
+		} else {
+			startTime = Date.now();
+
+			// Testing as if the counter had started a little over 2 hours ago
+			// startTime = Date.now() - 7198000;
+		}
+
+		// Fixing the double start issue
 		if (timeInterval.current) {
 			handleReset();
 		}
@@ -35,15 +44,23 @@ function TimeUnit() {
 	}
 
 	function handleStop() {
+		console.log(
+			`handleStop() timeInterval.current : ${timeInterval.current}`,
+		);
 		setIsTimeRunning(false);
 		clearInterval(timeInterval.current);
+		timeInterval.current = null;
 	}
 
 	function handleReset() {
+		console.log(
+			`handleReset() timeInterval.current : ${timeInterval.current}`,
+		);
 		setIsTimeRunning(false);
 		clearInterval(timeInterval.current);
 		setTimeState(0);
-		elapsedTime.current = 0
+		elapsedTime.current = 0;
+		timeInterval.current = null;
 	}
 
 	useEffect(() => {}, [elapsedTime]);
@@ -92,7 +109,6 @@ function TimeUnit() {
 				<button
 					onClick={handleStart}
 					className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer disabled:cursor-not-allowed disabled:bg-[#707070]"
-					disabled={isTimeRunning}
 				>
 					{isTimeRunning === false ? "Start" : "Running"}
 				</button>
@@ -103,7 +119,10 @@ function TimeUnit() {
 					Stop
 				</button>
 				<button
-					onClick={handleReset}
+					onClick={() => {
+						console.log(`RESET CLICKED`);
+						handleReset()
+					}}
 					className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer"
 				>
 					Reset
