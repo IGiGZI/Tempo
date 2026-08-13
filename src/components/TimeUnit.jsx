@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRef } from "react";
-import { useEffect } from "react";
+
 
 function TimeUnit() {
 	const [timeState, setTimeState] = useState(0);
@@ -11,13 +11,12 @@ function TimeUnit() {
 
 	function handleStart() {
 		// This fixes the double start issue logically
-		if (isTimeRunning === true){
-			return
+		if (isTimeRunning === true) {
+			return;
 		}
 
-
 		console.log(`handleStart CLICKED`);
-		
+
 		let startTime;
 
 		// Fixing 2 running intervals logically & calculating the new startTime after stopping
@@ -28,11 +27,6 @@ function TimeUnit() {
 
 			// Testing as if the counter had started a little over 2 hours ago
 			// startTime = Date.now() - 7198000;
-		}
-
-		// Fixing the double start issue
-		if (timeInterval.current) {
-			handleReset();
 		}
 
 		setIsTimeRunning(true);
@@ -62,9 +56,6 @@ function TimeUnit() {
 		elapsedTime.current = 0;
 		timeInterval.current = null;
 	}
-
-	useEffect(() => {}, [elapsedTime]);
-	// YOUR MUM IS A POLISH DONKEY
 
 	return (
 		<>
@@ -122,7 +113,7 @@ function TimeUnit() {
 				<button
 					onClick={() => {
 						console.log(`RESET CLICKED`);
-						handleReset()
+						handleReset();
 					}}
 					className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer"
 				>
