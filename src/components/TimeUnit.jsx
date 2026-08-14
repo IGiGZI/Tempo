@@ -1,12 +1,14 @@
 import { Fragment, useState } from "react";
 import { useRef } from "react";
 
-function TimeUnit() {
+function TimeUnit({handleLap}) {
 	const [timeState, setTimeState] = useState(0);
 	const [isTimeRunning, setIsTimeRunning] = useState(false);
 
-	const elapsedTime = useRef();
+	
 	const timeInterval = useRef();
+	// do i lift this ref up to Stopwatch.jsx?
+	const elapsedTime = useRef()
 
 	const timeUnitsArray = [
 		{
@@ -89,7 +91,7 @@ function TimeUnit() {
 
 	return (
 		<>
-			<div>
+			<div className="counter text-7xl font-extrabold mb-12">
 				<div className="flex items-center justify-center gap-6 mb-6">
 					{timeUnitsArray.map((element, index) => {
 						return (
@@ -131,7 +133,7 @@ function TimeUnit() {
 				>
 					Reset
 				</button>
-				<button className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer">
+				<button onClick={handleLap} className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer">
 					Lap
 				</button>
 			</div>
