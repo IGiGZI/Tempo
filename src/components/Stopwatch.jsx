@@ -5,13 +5,13 @@ import { useState, useRef } from "react";
 function Stopwatch() {
 	const [lapHistoryState, setLapHistoryState] = useState([]);
 
-	const elapsedTime = useRef();
+	const elapsedTimeRef = useRef();
 
 	function handleLap() {
-		let hours = Math.floor(elapsedTime.current / 1000 / 60 / 60);
-		let minutes = Math.floor((elapsedTime.current / 1000 / 60) % 60);
-		let seconds = Math.floor((elapsedTime.current / 1000) % 60);
-		let centisec = Math.floor((elapsedTime.current / 1000) % 10);
+		let hours = Math.floor(elapsedTimeRef.current / 1000 / 60 / 60);
+		let minutes = Math.floor((elapsedTimeRef.current / 1000 / 60) % 60);
+		let seconds = Math.floor((elapsedTimeRef.current / 1000) % 60);
+		let centisec = Math.floor((elapsedTimeRef.current / 10) % 100);
 
 		console.log(
 			`This lap's time -> ${hours}:${minutes}:${seconds}:${centisec}`,
@@ -27,15 +27,25 @@ function Stopwatch() {
 					centisec: centisec,
 				},
 			];
-      console.log(updatedLapHistory);
-      return updatedLapHistory
+			console.log(updatedLapHistory);
+			return updatedLapHistory;
 		});
 	}
 
 	return (
 		<>
-			<TimeUnit handleLap={handleLap} elapsedTime={elapsedTime} />
-			<Lap lapHistoryState={lapHistoryState} />
+			<div>
+				<TimeUnit
+					handleLap={handleLap}
+					elapsedTimeRef={elapsedTimeRef}
+				/>
+				<div>
+					<Lap
+						lapHistoryState={lapHistoryState}
+						setLapHistoryState={setLapHistoryState}
+					/>
+				</div>
+			</div>
 		</>
 	);
 }

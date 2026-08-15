@@ -1,14 +1,11 @@
 import { Fragment, useState } from "react";
 import { useRef } from "react";
 
-function TimeUnit({handleLap}) {
+function TimeUnit({ handleLap, elapsedTimeRef }) {
 	const [timeState, setTimeState] = useState(0);
 	const [isTimeRunning, setIsTimeRunning] = useState(false);
 
-	
 	const timeInterval = useRef();
-	// do i lift this ref up to Stopwatch.jsx?
-	const elapsedTime = useRef()
 
 	const timeUnitsArray = [
 		{
@@ -35,7 +32,7 @@ function TimeUnit({handleLap}) {
 		{
 			label: "CENTISEC",
 			timeFn: (t) => {
-				t = Math.floor((timeState % 1000) / 10);
+				t = Math.floor((timeState / 10) % 100);
 				return t.toString().padStart(2, "0");
 			},
 		},
@@ -52,8 +49,8 @@ function TimeUnit({handleLap}) {
 		let startTime;
 
 		// Fixing 2 running intervals logically & calculating the new startTime after stopping
-		if (elapsedTime.current > 0) {
-			startTime = Date.now() - elapsedTime.current;
+		if (elapsedTimeRef.current > 0) {
+			startTime = Date.now() - elapsedTimeRef.current;
 		} else {
 			startTime = Date.now();
 
@@ -64,8 +61,8 @@ function TimeUnit({handleLap}) {
 		setIsTimeRunning(true);
 
 		timeInterval.current = setInterval(() => {
-			elapsedTime.current = Date.now() - startTime;
-			setTimeState(elapsedTime.current);
+			elapsedTimeRef.current = Date.now() - startTime;
+			setTimeState(elapsedTimeRef.current);
 		}, 10);
 	}
 
@@ -85,7 +82,7 @@ function TimeUnit({handleLap}) {
 		setIsTimeRunning(false);
 		clearInterval(timeInterval.current);
 		setTimeState(0);
-		elapsedTime.current = 0;
+		elapsedTimeRef.current = 0;
 		timeInterval.current = null;
 	}
 
@@ -133,7 +130,11 @@ function TimeUnit({handleLap}) {
 				>
 					Reset
 				</button>
-				<button onClick={handleLap} className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer">
+				<button
+					onClick={handleLap}
+					className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer"
+					disabled={isTimeRunning === false}
+				>
 					Lap
 				</button>
 			</div>
