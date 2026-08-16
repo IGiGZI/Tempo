@@ -1,7 +1,9 @@
 function Lap({ lapHistoryState, setLapHistoryState }) {
 	const reversedArray = lapHistoryState.map((lap, index) => {
-		let lapDiff;
+		let lapDiff; // the object
+
 		let timeDiff;
+		let timeDiffColor;
 
 		if (index === 0) {
 			timeDiff = lap.totalElapsedMs;
@@ -18,6 +20,26 @@ function Lap({ lapHistoryState, setLapHistoryState }) {
 			centisec: Math.floor(timeDiff / 10) % 100,
 		};
 
+		let previousTimeDiff;
+		// i need to review this logic with myself
+		if (index === 0) {
+			previousTimeDiff = 0;
+		} else if (index - 2 < 0) {
+			previousTimeDiff = lapHistoryState[index - 1].totalElapsedMs - 0;
+		} else {
+			previousTimeDiff =
+				lapHistoryState[index - 1].totalElapsedMs -
+				lapHistoryState[index - 2].totalElapsedMs;
+		}
+
+		if (previousTimeDiff === 0) {
+			timeDiffColor = "text-black";
+		} else if (timeDiff > previousTimeDiff) {
+			timeDiffColor = "text-red-400";
+		} else {
+			timeDiffColor = "text-green-400";
+		}
+
 		console.log(`Next line will have totalElapsedMs`);
 		console.log(lapHistoryState[index].totalElapsedMs + " Index" + index);
 
@@ -27,7 +49,7 @@ function Lap({ lapHistoryState, setLapHistoryState }) {
 				className="flex justify-between bg-[#707070] rounded p-3.5 text-2xl"
 			>
 				<p>{index + 1}</p>
-				<p>
+				<p className={timeDiffColor}>
 					{lapDiff.hours.toString().padStart(2, "0")}:
 					{lapDiff.minutes.toString().padStart(2, "0")}:
 					{lapDiff.seconds.toString().padStart(2, "0")}:

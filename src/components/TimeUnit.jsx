@@ -1,7 +1,7 @@
 import { Fragment, useState } from "react";
 import { useRef } from "react";
 
-function TimeUnit({ handleLap, elapsedTimeRef }) {
+function TimeUnit({ handleLap, elapsedTimeRef, setLapHistoryState }) {
 	const [timeState, setTimeState] = useState(0);
 	const [isTimeRunning, setIsTimeRunning] = useState(false);
 
@@ -44,7 +44,7 @@ function TimeUnit({ handleLap, elapsedTimeRef }) {
 			return;
 		}
 
-		console.log(`handleStart CLICKED`);
+		// console.log(`handleStart CLICKED`);
 
 		let startTime;
 
@@ -70,23 +70,24 @@ function TimeUnit({ handleLap, elapsedTimeRef }) {
 	}
 
 	function handleStop() {
-		console.log(
-			`handleStop() timeInterval.current : ${timeInterval.current}`,
-		);
+		// console.log(
+		// 	`handleStop() timeInterval.current : ${timeInterval.current}`,
+		// );
 		setIsTimeRunning(false);
 		clearInterval(timeInterval.current);
 		timeInterval.current = null;
 	}
 
 	function handleReset() {
-		console.log(
-			`handleReset() timeInterval.current : ${timeInterval.current}`,
-		);
+		// console.log(
+		// 	`handleReset() timeInterval.current : ${timeInterval.current}`,
+		// );
 		setIsTimeRunning(false);
 		clearInterval(timeInterval.current);
 		setTimeState(0);
 		elapsedTimeRef.current = 0;
 		timeInterval.current = null;
+		setLapHistoryState([])
 	}
 
 	return (
@@ -126,7 +127,7 @@ function TimeUnit({ handleLap, elapsedTimeRef }) {
 
 				<button
 					onClick={() => {
-						console.log(`RESET CLICKED`);
+						// console.log(`RESET CLICKED`);
 						handleReset();
 					}}
 					className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer"

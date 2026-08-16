@@ -13,6 +13,8 @@ function Stopwatch() {
 		let seconds = Math.floor((elapsedTimeRef.current / 1000) % 60);
 		let centisec = Math.floor((elapsedTimeRef.current / 10) % 100);
 
+		console.log("handleLap called - setLapHistoryState about to run");
+
 		// console.log(
 		// 	`This lap's time -> ${hours}:${minutes}:${seconds}:${centisec}`,
 		// );
@@ -21,7 +23,7 @@ function Stopwatch() {
 			const updatedLapHistory = [
 				...prevValues,
 				{
-					totalElapsedMs: elapsedTimeRef.current, 
+					totalElapsedMs: elapsedTimeRef.current,
 					hours: hours,
 					minutes: minutes,
 					seconds: seconds,
@@ -40,13 +42,13 @@ function Stopwatch() {
 				<TimeUnit
 					handleLap={handleLap}
 					elapsedTimeRef={elapsedTimeRef}
+					setLapHistoryState={setLapHistoryState}
 				/>
 			</div>
 			<div className="w-2xl text-center m-auto">
 				<Lap
 					lapHistoryState={lapHistoryState}
 					setLapHistoryState={setLapHistoryState}
-					elapsedTimeRef={elapsedTimeRef}
 				/>
 			</div>
 		</>
