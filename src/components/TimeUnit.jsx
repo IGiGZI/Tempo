@@ -11,7 +11,7 @@ function TimeUnit({ handleLap, elapsedTimeRef }) {
 		{
 			label: "HOURS",
 			timeFn: (t) => {
-				t = Math.floor(t / 1000 / (60 * 60));
+				t = Math.floor(timeState / 1000 / (60 * 60));
 				return t.toString().padStart(2, "0");
 			},
 		},
@@ -56,6 +56,9 @@ function TimeUnit({ handleLap, elapsedTimeRef }) {
 
 			// Testing as if the counter had started a little over 2 hours ago
 			// startTime = Date.now() - 7198000;
+
+			// Testing for time 2 mins and 58 sec
+			// startTime = Date.now() - 178000;
 		}
 
 		setIsTimeRunning(true);
@@ -132,7 +135,7 @@ function TimeUnit({ handleLap, elapsedTimeRef }) {
 				</button>
 				<button
 					onClick={handleLap}
-					className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer"
+					className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer disabled:cursor-not-allowed"
 					disabled={isTimeRunning === false}
 				>
 					Lap
