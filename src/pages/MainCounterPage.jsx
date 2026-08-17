@@ -23,7 +23,6 @@ function MainCounterPage() {
 					alt="stopwatch.png"
 					className="w-50 text-center m-auto mb-8"
 				/>
-				{/* <h1 className="text-center text-9xl font-bold">Tempo</h1> */}
 			</header>
 			<main className="">
 				<Stopwatch />

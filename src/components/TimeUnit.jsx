@@ -87,7 +87,7 @@ function TimeUnit({ handleLap, elapsedTimeRef, setLapHistoryState }) {
 		setTimeState(0);
 		elapsedTimeRef.current = 0;
 		timeInterval.current = null;
-		setLapHistoryState([])
+		setLapHistoryState([]);
 	}
 
 	return (
@@ -110,18 +110,18 @@ function TimeUnit({ handleLap, elapsedTimeRef, setLapHistoryState }) {
 				{!isTimeRunning && (
 					<button
 						onClick={handleStart}
-						className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer"
+						className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer w-36"
 					>
-						Start
+						<img src="playSvg.svg" alt="" />
 					</button>
 				)}
 
 				{isTimeRunning && (
 					<button
 						onClick={handleStop}
-						className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer"
+						className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer w-36"
 					>
-						Stop
+						<img src="pauseSvg.svg" alt="" />
 					</button>
 				)}
 
@@ -130,16 +130,20 @@ function TimeUnit({ handleLap, elapsedTimeRef, setLapHistoryState }) {
 						// console.log(`RESET CLICKED`);
 						handleReset();
 					}}
-					className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer"
+					className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer w-36"
 				>
-					Reset
+					<img src="/resetSvg.svg" alt="" />
 				</button>
+
 				<button
 					onClick={handleLap}
-					className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer disabled:cursor-not-allowed"
+					className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer disabled:cursor-not-allowed w-36"
 					disabled={isTimeRunning === false}
 				>
-					Lap
+					<img src="/lapSvg.svg" alt="" />
+				</button>
+				<button className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer disabled:cursor-not-allowed w-36">
+					<img src="/saveSvg.svg" alt="" />
 				</button>
 			</div>
 		</>
