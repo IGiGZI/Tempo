@@ -1,4 +1,4 @@
-function Navbar() {
+function Navbar({ handleOpenModal }) {
 	return (
 		<nav className="w-full flex items-center justify-between p-4 border-b-2 border-b-gray-400 mb-16">
 			<div className="flex items-center gap-3">
@@ -10,10 +10,10 @@ function Navbar() {
 				<h1 className="font-bold text-4xl">Tempo</h1>
 			</div>
 			<div>
-				<button className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer">
+				<button onClick={() => {handleOpenModal('login')}} className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer">
 					Login
 				</button>
-				<button className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer">
+				<button onClick={() => {handleOpenModal('signup')}} className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer">
 					Sign up
 				</button>
 			</div>
