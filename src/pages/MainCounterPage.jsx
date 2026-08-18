@@ -1,22 +1,13 @@
 import Stopwatch from "../components/Stopwatch";
+import Navbar from "../components/Navbar";
+import AuthModal from "../components/AuthModal";
+import { useState } from "react";
 
 function MainCounterPage() {
+	const [modalMode, setModalMode] = useState();
 	return (
 		<>
-			<nav className="w-full flex items-center justify-between p-4 border-b-2 border-b-gray-400 mb-16">
-				<div className="flex items-center gap-3">
-				<img src="/stopwatchLogo.svg" alt="stopwatch.png" className="w-12"/>
-				<h1 className="font-bold text-4xl">Tempo</h1>
-				</div>
-				<div>
-					<button className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer">
-						Login
-					</button>
-					<button className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer">
-						Sign up
-					</button>
-				</div>
-			</nav>
+			<Navbar setModalMode={setModalMode} />
 			<header className="mb-12">
 				<img
 					src="/stopwatchLogo.svg"
@@ -24,8 +15,9 @@ function MainCounterPage() {
 					className="w-50 text-center m-auto mb-8"
 				/>
 			</header>
-			<main className="">
+			<main>
 				<Stopwatch />
+				<AuthModal modalMode={modalMode} setModalMode={setModalMode} />
 			</main>
 		</>
 	);
