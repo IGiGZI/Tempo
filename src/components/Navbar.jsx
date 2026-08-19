@@ -4,8 +4,8 @@ import { Link } from "react-router";
 function Navbar({ handleOpenModal }) {
 	const { isLoggedIn, currEmail, logoutFn } = useAuth();
 
-	console.log(`Current email: ${currEmail}`);
-	console.log(`isLoggedIn: ${isLoggedIn}`);
+	// console.log(`Current email: ${currEmail}`);
+	// console.log(`isLoggedIn: ${isLoggedIn}`);
 
 	return (
 		<nav className="w-full flex items-center justify-between p-4 border-b-2 border-b-gray-400 mb-16">

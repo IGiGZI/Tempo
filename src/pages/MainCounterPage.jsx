@@ -8,7 +8,6 @@ function MainCounterPage() {
 
 	function handleOpenModal (identifier){
 		setModalMode(identifier)
-		console.log(identifier);
 	}
 
 	return (

@@ -6,17 +6,17 @@ export const authContext = createContext();
 export function AuthContextProvider({ children }) {
 	const [token, setToken] = useState(() => localStorage.getItem("token"));
 	const [isLoading, setIsloading] = useState();
+	const [error, setError] = useState(null)
 	const [currEmail, setCurrEmail] = useState(() =>
 		localStorage.getItem("email"),
 	);
-	const [Error, setError] = useState()
 
 	const isLoggedIn = token ? true : false;
 
-	console.log(token);
+	// console.log(token);
 
 	function logoutFn() {
-		console.log(`logoutFN fired`);
+		// console.log(`logoutFN fired`);
 		localStorage.removeItem("token");
 		setToken(null);
 		localStorage.removeItem("email");
@@ -33,10 +33,9 @@ export function AuthContextProvider({ children }) {
 			setCurrEmail(response.user.email);
 		} catch (err) {
 			console.error(`Login Failed.`);
-			setError(err.messaage)
+			setError(err.message)
 			console.log(`Next line is the error message`);
 			console.log(err.message);
-			
 			throw err;
 		} finally {
 			setIsloading(false);
@@ -53,6 +52,7 @@ export function AuthContextProvider({ children }) {
 			localStorage.setItem("email", response.user.email);
 		} catch (err) {
 			console.error(`Signup Failed.`);
+			setError(err.message)
 			throw err;
 		} finally {
 			setIsloading(false);
@@ -68,6 +68,8 @@ export function AuthContextProvider({ children }) {
 		isLoading,
 		setIsloading,
 		currEmail,
+		error,
+		setError,
 	};
 
 	return (

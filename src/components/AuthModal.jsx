@@ -2,25 +2,31 @@ import { useAuth } from "../context/AuthContext";
 import { useRef } from "react";
 
 function AuthModal({ modalMode, setModalMode }) {
-	function handleCloseModal(){
-		setModalMode(null)
+	const { login, signup, error, setError } = useAuth();
+	function handleCloseModal() {
+		setModalMode(null);
+		setError(null)
 	}
 
-	const { login, signup } = useAuth()
-	
+	const emailRef = useRef(null);
+	const passwordRef = useRef(null);
 
-	const emailRef = useRef(null)
-	const passwordRef = useRef(null)
-
-	function handleAuthClick(){
-		if (modalMode === 'login'){
-			login(emailRef.current.value, passwordRef.current.value)
+	async function handleAuthClick() {
+		if (modalMode === "login") {
+			try {
+				await login(emailRef.current.value, passwordRef.current.value);
+				handleCloseModal()
+			} catch (err) {
+			// show err if needed
+			}
 		} else {
-			signup(emailRef.current.value, passwordRef.current.value)
+			try {
+				await signup(emailRef.current.value, passwordRef.current.value);
+			} catch (err) {
+				console.log(err);
+			}
 		}
-		handleCloseModal()
 	}
-
 
 	return (
 		<>
@@ -32,7 +38,10 @@ function AuthModal({ modalMode, setModalMode }) {
 							<h1 className="text-4xl font-semibold">
 								{modalMode === "login" ? "Log in" : "Sign up"}
 							</h1>
-							<button onClick={handleCloseModal} className="w-12 cursor-pointer hover:rotate-90 transition duration-300">
+							<button
+								onClick={handleCloseModal}
+								className="w-12 cursor-pointer hover:rotate-90 transition duration-300"
+							>
 								<img src="cancelSvg.svg" alt="" />
 							</button>
 						</div>
@@ -49,8 +58,14 @@ function AuthModal({ modalMode, setModalMode }) {
 								placeholder="password"
 								ref={passwordRef}
 							/>
+							{error && <p className="text-red-700">{error}</p>}
 						</div>
-						<button onClick={() => {handleAuthClick()}} className="bg-[#454545] hover:bg-[#707070] rounded-2xl p-3.5 cursor-pointer w-full font-bold text-2xl">
+						<button
+							onClick={() => {
+								handleAuthClick();
+							}}
+							className="bg-[#454545] hover:bg-[#707070] rounded-2xl p-3.5 cursor-pointer w-full font-bold text-2xl"
+						>
 							{modalMode === "login" ? "Log in" : "Sign up"}
 						</button>
 					</div>
