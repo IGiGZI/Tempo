@@ -1,5 +1,5 @@
 import { createContext, useState, useContext } from "react";
-import { createTimeMark } from "../api/timemarks";
+import { createTimeMark, getTimeMarks, deleteTimeMark } from "../api/timemarks";
 
 export const timeMarksCtx = createContext();
 
@@ -7,7 +7,7 @@ export function TimeMarkContextProvider({ children }) {
 	const [timeMarks, setTimeMarks] = useState([]);
 
 	async function handleSave({ duration, note }) {
-    console.log(`handleSave fired`);
+    // console.log(`handleSave fired`);
 		const response = await createTimeMark({ duration, note });
 		setTimeMarks((prevTimemarks) => {
 			return [
@@ -20,12 +20,21 @@ export function TimeMarkContextProvider({ children }) {
 
 
 	async function fetchTimeMarks(){
+		const response = await getTimeMarks()
+		console.log(response);
+		setTimeMarks(response)
+	}
 
+	async function handleDeleteClick(id){
+		await deleteTimeMark(id)
+		fetchTimeMarks()
 	}
 
 	const values = {
 		handleSave,
 		timeMarks,
+		fetchTimeMarks,
+		handleDeleteClick
 	};
 
 	return (
