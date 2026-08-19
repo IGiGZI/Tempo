@@ -15,6 +15,12 @@ export function TimeMarkContextProvider({ children }) {
 				{ duration: response.duration, note: response.note },
 			];
 		});
+		return response
+	}
+
+
+	async function fetchTimeMarks(){
+
 	}
 
 	const values = {

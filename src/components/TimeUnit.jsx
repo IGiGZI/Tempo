@@ -1,13 +1,24 @@
 import { Fragment, useState } from "react";
 import { useRef } from "react";
 import { useTimeMarks } from "../context/TimeMarksContext.jsx";
+import SaveModal from "./SaveModal.jsx";
 
 function TimeUnit({ handleLap, elapsedTimeRef, setLapHistoryState }) {
 	const [timeState, setTimeState] = useState(0);
 	const [isTimeRunning, setIsTimeRunning] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
 
 	const { handleSave } = useTimeMarks();
-	
+
+	function handleSaveClick() {
+		isTimeRunning && handleStop();
+		setIsOpen(true);
+
+		// handleSave({
+		// 	duration: elapsedTimeRef.current,
+		// 	note: "Filler",
+		// });
+	}
 
 	const timeInterval = useRef();
 
@@ -138,15 +149,18 @@ function TimeUnit({ handleLap, elapsedTimeRef, setLapHistoryState }) {
 					<img src="/lapSvg.svg" alt="" />
 				</button>
 				<button
-					onClick={() => {
-						console.log(elapsedTimeRef.current);
-						handleSave({duration:elapsedTimeRef.current, note:"Filler"});
-					}}
+					onClick={handleSaveClick}
 					className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer disabled:cursor-not-allowed w-36"
 				>
 					<img src="/saveSvg.svg" alt="" />
 				</button>
 			</div>
+			<SaveModal
+				isOpen={isOpen}
+				setIsOpen={setIsOpen}
+				onSave={handleSave}
+				elapsedTimeRef={elapsedTimeRef}
+			/>
 		</>
 	);
 }
