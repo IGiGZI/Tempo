@@ -31,6 +31,9 @@ npm run dev
 ```
 
 The app will be running locally at `http://localhost:5173` (or whichever port Vite assigns).
+### Important note
+  This project requires the backend part to make the time mark save & login/signup work
+  GitHub link: https://github.com/IGiGZI/Tempo-backend
 
 ## 📸 Screenshots
 
