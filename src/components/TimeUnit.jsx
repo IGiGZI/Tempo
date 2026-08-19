@@ -1,9 +1,13 @@
 import { Fragment, useState } from "react";
 import { useRef } from "react";
+import { useTimeMarks } from "../context/TimeMarksContext.jsx";
 
 function TimeUnit({ handleLap, elapsedTimeRef, setLapHistoryState }) {
 	const [timeState, setTimeState] = useState(0);
 	const [isTimeRunning, setIsTimeRunning] = useState(false);
+
+	const { handleSave } = useTimeMarks();
+	
 
 	const timeInterval = useRef();
 
@@ -44,8 +48,6 @@ function TimeUnit({ handleLap, elapsedTimeRef, setLapHistoryState }) {
 			return;
 		}
 
-		// console.log(`handleStart CLICKED`);
-
 		let startTime;
 
 		// Fixing 2 running intervals logically & calculating the new startTime after stopping
@@ -70,18 +72,12 @@ function TimeUnit({ handleLap, elapsedTimeRef, setLapHistoryState }) {
 	}
 
 	function handleStop() {
-		// console.log(
-		// 	`handleStop() timeInterval.current : ${timeInterval.current}`,
-		// );
 		setIsTimeRunning(false);
 		clearInterval(timeInterval.current);
 		timeInterval.current = null;
 	}
 
 	function handleReset() {
-		// console.log(
-		// 	`handleReset() timeInterval.current : ${timeInterval.current}`,
-		// );
 		setIsTimeRunning(false);
 		clearInterval(timeInterval.current);
 		setTimeState(0);
@@ -127,7 +123,6 @@ function TimeUnit({ handleLap, elapsedTimeRef, setLapHistoryState }) {
 
 				<button
 					onClick={() => {
-						// console.log(`RESET CLICKED`);
 						handleReset();
 					}}
 					className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer w-36"
@@ -142,7 +137,13 @@ function TimeUnit({ handleLap, elapsedTimeRef, setLapHistoryState }) {
 				>
 					<img src="/lapSvg.svg" alt="" />
 				</button>
-				<button className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer disabled:cursor-not-allowed w-36">
+				<button
+					onClick={() => {
+						console.log(elapsedTimeRef.current);
+						handleSave({duration:elapsedTimeRef.current, note:"Filler"});
+					}}
+					className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer disabled:cursor-not-allowed w-36"
+				>
 					<img src="/saveSvg.svg" alt="" />
 				</button>
 			</div>
