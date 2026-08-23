@@ -1,5 +1,6 @@
 import { createContext, useState, useContext } from "react";
 import { login as loginFn, signup as signupFn } from "../api/auth";
+import { useNavigate } from "react-router";
 
 export const authContext = createContext();
 
@@ -11,6 +12,7 @@ export function AuthContextProvider({ children }) {
 		localStorage.getItem("email"),
 	);
 
+	const navigate = useNavigate()
 	const isLoggedIn = token ? true : false;
 
 	// console.log(token);
@@ -21,6 +23,7 @@ export function AuthContextProvider({ children }) {
 		setToken(null);
 		localStorage.removeItem("email");
 		setCurrEmail(null);
+		navigate("/")
 	}
 
 	async function login(email, password) {
