@@ -7,8 +7,11 @@ function Navbar({ handleOpenModal }) {
 	// console.log(`Current email: ${currEmail}`);
 	// console.log(`isLoggedIn: ${isLoggedIn}`);
 
+	//  border-b-gray-400 navbar OG color
+	// ECDFCC
+
 	return (
-		<nav className="w-full flex items-center justify-between p-4 border-b-2 border-b-gray-400 mb-16">
+		<nav className="w-full flex items-center justify-between p-4 border-b-2 border-b-[#1D2128] mb-16">
 			<div className="flex items-center gap-3">
 				<img
 					src="/stopwatchLogo.svg"
@@ -19,13 +22,13 @@ function Navbar({ handleOpenModal }) {
 			</div>
 			<div className="flex gap-8">
 				<Link to={"/"}>
-					<p className="underline underline-offset-8">Home Page</p>
+					<p className="hover:text-[#00C39A] transition duration-300 text-xl">Home Page</p>
 				</Link>
 				<Link to={"/"}>
-					<p className="underline underline-offset-8">About</p>
+					<p className="hover:text-[#00C39A] transition duration-300 text-xl">About</p>
 				</Link>
 				<Link to={"/"}>
-					<p className="underline underline-offset-8">Contact</p>
+					<p className="hover:text-[#00C39A] transition duration-300 text-xl">Contact</p>
 				</Link>
 			</div>
 			<div>

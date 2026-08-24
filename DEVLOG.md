@@ -7,13 +7,13 @@ A running log of changes, decisions, and what's left to do.
 ## 2026-08-23
 
 ### Added
-- DEVLOG.md file
-
-### Changed
 -
 
+### Changed
+- Changed some UI stuff.
+
 ### Fixed
-- Re-routing to the home page after logging out within the profile page.
+-
 
 ### To Do
 - [ ] Add optional lap saving

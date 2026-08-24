@@ -1,12 +1,10 @@
 import Stopwatch from "../components/Stopwatch";
 import Navbar from "../components/Navbar";
 import AuthModal from "../components/AuthModal";
-// import SaveModal from "../components/SaveModal";
 import { useState } from "react";
 
 function MainCounterPage() {
 	const [modalMode, setModalMode] = useState(null);
-	// const [isOpen, setIsOpen] = useState(false);
 
 	function handleOpenModal(identifier) {
 		setModalMode(identifier);
@@ -32,7 +30,6 @@ function MainCounterPage() {
 					setModalMode={setModalMode}
 					handleOpenModal={handleOpenModal}
 				/>
-				{/* <SaveModal isOpen={isOpen} setIsOpen={setIsOpen} /> */}
 			</main>
 		</>
 	);
