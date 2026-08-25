@@ -114,46 +114,64 @@ function TimeUnit({ handleLap, elapsedTimeRef, setLapHistoryState }) {
 					})}
 				</div>
 
-				{!isTimeRunning && (
-					<button
-						onClick={handleStart}
-						className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer w-36"
-					>
-						<img src="playSvg.svg" alt="" />
-					</button>
-				)}
+				<div className="flex">
+					{!isTimeRunning && (
+						<div>
+							<button
+								onClick={handleStart}
+								className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer w-36"
+							>
+								<img src="playSvg.svg" alt="" />
+							</button>
+							<p className="text-5xl">Start</p>
+						</div>
+					)}
 
-				{isTimeRunning && (
-					<button
-						onClick={handleStop}
-						className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer w-36"
-					>
-						<img src="pauseSvg.svg" alt="" />
-					</button>
-				)}
+					{isTimeRunning && (
+						<div>
+							<button
+								onClick={handleStop}
+								className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer w-36"
+							>
+								<img src="pauseSvg.svg" alt="" />
+							</button>
+							<p className="text-5xl">Stop</p>
+						</div>
+					)}
 
-				<button
-					onClick={() => {
-						handleReset();
-					}}
-					className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer w-36"
-				>
-					<img src="/resetSvg.svg" alt="" />
-				</button>
+					<div>
+						<button
+							onClick={() => {
+								handleReset();
+							}}
+							className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer w-36"
+						>
+							<img src="/resetSvg.svg" alt="" />
+						</button>
+						<p className="text-5xl">Reset</p>
+					</div>
 
-				<button
-					onClick={handleLap}
-					className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer disabled:cursor-not-allowed w-36"
-					disabled={isTimeRunning === false}
-				>
-					<img src="/lapSvg.svg" alt="" />
-				</button>
-				<button
-					onClick={handleSaveClick}
-					className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer disabled:cursor-not-allowed w-36"
-				>
-					<img src="/saveSvg.svg" alt="" />
-				</button>
+					<div>
+						<button
+							onClick={handleLap}
+							className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer disabled:cursor-not-allowed w-36"
+							disabled={isTimeRunning === false}
+						>
+							<img src="/lapSvg.svg" alt="" />
+						</button>
+						<p className="text-5xl">Lap</p>
+					</div>
+
+					<div>
+						<button
+							onClick={handleSaveClick}
+							className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer disabled:cursor-not-allowed w-36"
+						>
+							<img src="/saveSvg.svg" alt="" />
+						</button>
+						<p className="text-5xl">Save</p>
+					</div>
+				</div>
 			</div>
 			<SaveModal
 				isOpen={isOpen}
