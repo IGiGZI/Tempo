@@ -1,22 +1,23 @@
 import Stopwatch from "../components/Stopwatch";
 import Navbar from "../components/Navbar";
-import AuthModal from "../components/AuthModal";
-import { useState } from "react";
+// import AuthModal from "../components/AuthModal";
+// import { useState } from "react";
 
 function MainCounterPage() {
-	const [modalMode, setModalMode] = useState(null);
+	// const [modalMode, setModalMode] = useState(null);
 
-	function handleOpenModal(identifier) {
-		setModalMode(identifier);
-	}
+	// function handleOpenModal(identifier) {
+	// 	setModalMode(identifier);
+	// }
 
 	return (
 		<>
-			<Navbar
+			{/* <Navbar
 				setModalMode={setModalMode}
 				handleOpenModal={handleOpenModal}
-			/>
-			<header className="mb-12">
+			/> */}
+			<Navbar/>
+			<header className="mb-12 mt-16">
 				<img
 					src="/stopwatchLogo.svg"
 					alt="stopwatch.png"
@@ -25,11 +26,11 @@ function MainCounterPage() {
 			</header>
 			<main>
 				<Stopwatch />
-				<AuthModal
+				{/* <AuthModal
 					modalMode={modalMode}
 					setModalMode={setModalMode}
 					handleOpenModal={handleOpenModal}
-				/>
+				/> */}
 			</main>
 		</>
 	);

@@ -1,15 +1,23 @@
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router";
+import { useState } from "react";
+import AuthModal from "./AuthModal";
 import UserIcon from "../assets/icons/userProfile.svg?react";
 
-function Navbar({ handleOpenModal }) {
+function Navbar() {
 	const { isLoggedIn, currEmail, logoutFn } = useAuth();
+
+	const [modalMode, setModalMode] = useState(null);
+
+	function handleOpenModal(identifier) {
+		setModalMode(identifier);
+	}
 
 	// console.log(`Current email: ${currEmail}`);
 	// console.log(`isLoggedIn: ${isLoggedIn}`);
 
 	return (
-		<nav className="w-full flex items-center justify-between p-4 border-b-2 border-b-[#1D2128] mb-16">
+		<nav className="w-full flex items-center justify-between p-4 border-b-2 border-b-[#1D2128] ">
 			<div className="flex items-center gap-3">
 				<img
 					src="/stopwatchLogo.svg"
@@ -24,12 +32,12 @@ function Navbar({ handleOpenModal }) {
 						Home Page
 					</p>
 				</Link>
-				<Link to={"/"}>
+				<Link to={"/about"}>
 					<p className="hover:text-[#00C39A] transition duration-300 text-xl">
 						About
 					</p>
 				</Link>
-				<Link to={"/"}>
+				<Link to={"/contact"}>
 					<p className="hover:text-[#00C39A] transition duration-300 text-xl">
 						Contact
 					</p>
@@ -77,6 +85,11 @@ function Navbar({ handleOpenModal }) {
 					</div>
 				)}
 			</div>
+			<AuthModal
+					modalMode={modalMode}
+					setModalMode={setModalMode}
+					handleOpenModal={handleOpenModal}
+				/>
 		</nav>
 	);
 }

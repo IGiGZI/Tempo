@@ -11,8 +11,8 @@ A running log of changes, decisions, and what's left to do.
 
 ### Changed
 - Changed some UI stuff.
-  - Added text to show what the timer control buttons mean
-  - Added better profile link display while logged in
+  - Added About page
+  - Added Contact page
 
 ### Fixed
 -
@@ -23,6 +23,6 @@ A running log of changes, decisions, and what's left to do.
 - [ ] Add mobile compatibility
 - [ ] Add signup account conditions (example: password limit)
 - [ ] Add new account features
-- [ ] Change UI (icons, animations, saved time marks display)
+- [ ] Change UI (icons, animations, saved time marks display and so much more)
 
 ---
