@@ -45,7 +45,7 @@ function Stopwatch() {
 					setLapHistoryState={setLapHistoryState}
 				/>
 			</div>
-			<div className="w-2xl text-center m-auto">
+			<div className="w-full max-w-2xl text-center m-auto px-4">
 				<Lap
 					lapHistoryState={lapHistoryState}
 					setLapHistoryState={setLapHistoryState}

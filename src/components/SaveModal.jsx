@@ -26,7 +26,7 @@ function SaveModal({ isOpen, setIsOpen, onSave, elapsedTimeRef }) {
 				setSaveStatus(null);
 			}}
 		>
-			<div className="bg-[#222222] p-8 rounded-3xl text-center w-96">
+			<div className="bg-[#222222] p-8 rounded-3xl text-center w-full">
 				<h1 className="text-3xl mb-6">Add a note (optional).</h1>
 				<textarea
 					ref={textAreaRef}

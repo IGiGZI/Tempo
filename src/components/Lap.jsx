@@ -79,19 +79,19 @@ function Lap({ lapHistoryState, setLapHistoryState }) {
 	}
 
 	return (
-		<div>
-			<div className="flex flex-col gap-3.5 max-h-92 overflow-y-auto overflow-x-hidden">
-				{reversedArray.reverse()}
-			</div>
-			{lapHistoryState.length > 0 && (
-				<button
-					onClick={handleLapReset}
-					className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer text-2xl"
-				>
-					Reset Laps
-				</button>
-			)}
-		</div>
+		<div className="w-full">
+	<div className="flex flex-col gap-3 sm:gap-3.5 max-h-92 overflow-y-auto overflow-x-hidden">
+		{reversedArray.reverse()}
+	</div>
+	{lapHistoryState.length > 0 && (
+		<button
+			onClick={handleLapReset}
+			className="bg-[#454545] hover:bg-[#707070] rounded p-3 sm:p-3.5 m-2 cursor-pointer text-lg sm:text-2xl"
+		>
+			Reset Laps
+		</button>
+	)}
+</div>
 	);
 }
 

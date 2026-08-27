@@ -13,11 +13,6 @@ function TimeUnit({ handleLap, elapsedTimeRef, setLapHistoryState }) {
 	function handleSaveClick() {
 		isTimeRunning && handleStop();
 		setIsOpen(true);
-
-		// handleSave({
-		// 	duration: elapsedTimeRef.current,
-		// 	note: "Filler",
-		// });
 	}
 
 	const timeInterval = useRef();
@@ -99,14 +94,16 @@ function TimeUnit({ handleLap, elapsedTimeRef, setLapHistoryState }) {
 
 	return (
 		<>
-			<div className="counter text-7xl font-extrabold mb-12">
-				<div className="flex items-center justify-center gap-6 mb-6">
+			<div className="counter text-3xl sm:text-5xl md:text-7xl font-extrabold mb-8 md:mb-12 px-4 w-full">
+				<div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-6 mb-6 flex-wrap">
 					{timeUnitsArray.map((element, index) => {
 						return (
 							<Fragment key={element.label}>
 								<div>
 									<p>{element.timeFn(timeState)}</p>
-									<p className="text-xl">{element.label}</p>
+									<p className="text-xs sm:text-base md:text-xl text-center">
+										{element.label}
+									</p>
 								</div>
 								{index < timeUnitsArray.length - 1 && <p>:</p>}
 							</Fragment>
@@ -114,62 +111,62 @@ function TimeUnit({ handleLap, elapsedTimeRef, setLapHistoryState }) {
 					})}
 				</div>
 
-				<div className="flex">
+				<div className="flex flex-wrap justify-center gap-1 sm:gap-2">
 					{!isTimeRunning && (
-						<div>
+						<div className="flex flex-col items-center">
 							<button
 								onClick={handleStart}
-								className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer w-36"
+								className="bg-[#454545] hover:bg-[#707070] rounded p-2 sm:p-3 md:p-3.5 m-1 sm:m-2 cursor-pointer w-16 sm:w-24 md:w-36"
 							>
 								<img src="playSvg.svg" alt="" />
 							</button>
-							<p className="text-5xl">Start</p>
+							<p className="text-lg sm:text-3xl md:text-5xl">Start</p>
 						</div>
 					)}
 
 					{isTimeRunning && (
-						<div>
+						<div className="flex flex-col items-center">
 							<button
 								onClick={handleStop}
-								className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer w-36"
+								className="bg-[#454545] hover:bg-[#707070] rounded p-2 sm:p-3 md:p-3.5 m-1 sm:m-2 cursor-pointer w-16 sm:w-24 md:w-36"
 							>
 								<img src="pauseSvg.svg" alt="" />
 							</button>
-							<p className="text-5xl">Stop</p>
+							<p className="text-lg sm:text-3xl md:text-5xl">Stop</p>
 						</div>
 					)}
 
-					<div>
+					<div className="flex flex-col items-center">
 						<button
 							onClick={() => {
 								handleReset();
 							}}
-							className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer w-36"
+							className="bg-[#454545] hover:bg-[#707070] rounded p-2 sm:p-3 md:p-3.5 m-1 sm:m-2 cursor-pointer w-16 sm:w-24 md:w-36"
 						>
 							<img src="/resetSvg.svg" alt="" />
 						</button>
-						<p className="text-5xl">Reset</p>
+						<p className="text-lg sm:text-3xl md:text-5xl">Reset</p>
 					</div>
 
-					<div>
+					<div className="flex flex-col items-center">
 						<button
 							onClick={handleLap}
-							className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer disabled:cursor-not-allowed w-36"
+							className="bg-[#454545] hover:bg-[#707070] rounded p-2 sm:p-3 md:p-3.5 m-1 sm:m-2 cursor-pointer disabled:cursor-not-allowed w-16 sm:w-24 md:w-36"
 							disabled={isTimeRunning === false}
 						>
 							<img src="/lapSvg.svg" alt="" />
 						</button>
-						<p className="text-5xl">Lap</p>
+						<p className="text-lg sm:text-3xl md:text-5xl">Lap</p>
 					</div>
 
-					<div>
+					<div className="flex flex-col items-center">
 						<button
 							onClick={handleSaveClick}
-							className="bg-[#454545] hover:bg-[#707070] rounded p-3.5 m-2 cursor-pointer disabled:cursor-not-allowed w-36"
+							className="bg-[#454545] hover:bg-[#707070] rounded p-2 sm:p-3 md:p-3.5 m-1 sm:m-2 cursor-pointer disabled:cursor-not-allowed w-16 sm:w-24 md:w-36"
 						>
 							<img src="/saveSvg.svg" alt="" />
 						</button>
-						<p className="text-5xl">Save</p>
+						<p className="text-lg sm:text-3xl md:text-5xl">Save</p>
 					</div>
 				</div>
 			</div>

@@ -33,7 +33,7 @@ function ProfilePage() {
 	return (
 		<>
 			<Navbar />
-			<main>
+			<main className="mt-12">
 				<div>
 					<h1 className="text-center text-6xl mb-22">
 						Time marks Saved

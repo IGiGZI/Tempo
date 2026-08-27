@@ -9,8 +9,9 @@ A running log of changes, decisions, and what's left to do.
 
 ### Changed
 - Changed some UI stuff.
-  - Added descriptive text in the laps.
-  - Added active color in the nav links.
+  - Added responsive Navbar design
+  - Added responsive Main page design (Timer + buttons + laps)
+  - Added responsive modals (auth modal + save modal)
 
 ### Fixed
 - 
