@@ -1,5 +1,5 @@
 import { useAuth } from "../context/AuthContext";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import { useState } from "react";
 import AuthModal from "./AuthModal";
 import UserIcon from "../assets/icons/userProfile.svg?react";
@@ -26,22 +26,22 @@ function Navbar() {
 				/>
 				<h1 className="font-bold text-4xl">Tempo</h1>
 			</div>
-			<div className="flex gap-8">
-				<Link to={"/"}>
+			<div className="links flex gap-8">
+				<NavLink to={"/"}>
 					<p className="hover:text-[#00C39A] transition duration-300 text-xl">
 						Home Page
 					</p>
-				</Link>
-				<Link to={"/about"}>
+				</NavLink>
+				<NavLink to={"/about"}>
 					<p className="hover:text-[#00C39A] transition duration-300 text-xl">
 						About
 					</p>
-				</Link>
-				<Link to={"/contact"}>
+				</NavLink>
+				<NavLink to={"/contact"}>
 					<p className="hover:text-[#00C39A] transition duration-300 text-xl">
 						Contact
 					</p>
-				</Link>
+				</NavLink>
 			</div>
 			<div>
 				{!isLoggedIn && (

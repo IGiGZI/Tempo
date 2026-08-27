@@ -52,6 +52,10 @@ body {
   z-index: 1000;
 }
 
+nav .links a.active{
+	color: #00C39A;
+}
+
 /* .modal-content {
   background: white;
   border-radius: 8px;

@@ -20,7 +20,6 @@ function AuthModal({ modalMode, setModalMode }) {
 			} catch (err) {
 				// show err if needed
 				console.log(err);
-				
 			}
 		} else {
 			try {
@@ -61,6 +60,18 @@ function AuthModal({ modalMode, setModalMode }) {
 							ref={passwordRef}
 						/>
 						{error && <p className="text-red-700">{error}</p>}
+						{modalMode === "signup" && (
+							<div className="text-left">
+								<p className="mb-2">
+									Password must be at least 6 characters long.
+								</p>
+								<p className="mb-2">
+									Password must contain at least 1 alphabet
+									character.
+								</p>
+								<p>Password must contain at least 1 number.</p>
+							</div>
+						)}
 					</div>
 					<button
 						onClick={() => {

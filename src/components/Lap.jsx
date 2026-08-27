@@ -48,19 +48,28 @@ function Lap({ lapHistoryState, setLapHistoryState }) {
 				key={index}
 				className="flex justify-between bg-[#707070] rounded p-3.5 text-2xl"
 			>
-				<p>{index + 1}</p>
-				<p className={timeDiffColor}>
-					{lapDiff.hours.toString().padStart(2, "0")}:
-					{lapDiff.minutes.toString().padStart(2, "0")}:
-					{lapDiff.seconds.toString().padStart(2, "0")}:
-					{lapDiff.centisec.toString().padStart(2, "0")}
-				</p>
-				<p>
-					{lap.hours.toString().padStart(2, "0")}:
-					{lap.minutes.toString().padStart(2, "0")}:
-					{lap.seconds.toString().padStart(2, "0")}:
-					{lap.centisec.toString().padStart(2, "0")}
-				</p>
+				<div>
+					<p className="text-lg">Lap NO.</p>
+					<p>{index + 1}</p>
+				</div>
+				<div>
+					<p className="text-lg">Lap-to-lap difference</p>
+					<p className={timeDiffColor}>
+						{lapDiff.hours.toString().padStart(2, "0")}:
+						{lapDiff.minutes.toString().padStart(2, "0")}:
+						{lapDiff.seconds.toString().padStart(2, "0")}:
+						{lapDiff.centisec.toString().padStart(2, "0")}
+					</p>
+				</div>
+				<div>
+					<p className="text-lg">Lap time</p>
+					<p>
+						{lap.hours.toString().padStart(2, "0")}:
+						{lap.minutes.toString().padStart(2, "0")}:
+						{lap.seconds.toString().padStart(2, "0")}:
+						{lap.centisec.toString().padStart(2, "0")}
+					</p>
+				</div>
 			</div>
 		);
 	});
