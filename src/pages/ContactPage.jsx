@@ -2,28 +2,28 @@ import Navbar from "../components/Navbar";
 
 const contacts = [
 	{
-		code: "01",
+		code: "1",
 		label: "Email",
 		value: "adhamibrahimali131@gmail.com",
-		href: "mailto:gigz.dev@gmail.com",
+		href: "#",
 	},
 	{
-		code: "02",
+		code: "2",
 		label: "LinkedIn",
 		value: "www.linkedin.com/in/adham-ibrahim-49ba17421",
-		href: "https://linkedin.com/in/gigz-dev",
+		href: "https://www.linkedin.com/in/adham-ibrahim-49ba17421/",
 	},
 	{
-		code: "03",
+		code: "3",
 		label: "GitHub",
 		value: "github.com/IGiGZI",
 		href: "https://github.com/IGiGZI",
 	},
 	{
-		code: "04",
+		code: "4",
 		label: "Phone",
 		value: "+20 10-650-25-470",
-		href: "tel:+201000000000",
+		href: "#",
 	},
 ];
 
@@ -50,6 +50,8 @@ function ContactPage() {
 								key={c.code}
 								href={c.href}
 								className="group flex items-center justify-between border-b border-[#70707033] py-6 transition-colors hover:bg-black rounded p-4"
+								onClick={c.code == 1 || c.code == 4 ? (e) => e.preventDefault() : null}
+								target="_blank"
 							>
 								<div className="flex items-center gap-6">
 									<span className="font-mono text-sm text-[#00C39A]">
