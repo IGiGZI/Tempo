@@ -8,6 +8,8 @@ export function AuthContextProvider({ children }) {
 	const [token, setToken] = useState(() => localStorage.getItem("token"));
 	const [isLoading, setIsloading] = useState();
 	const [error, setError] = useState(null)
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const [modalMode, setModalMode] = useState(null);
 	const [currEmail, setCurrEmail] = useState(() =>
 		localStorage.getItem("email"),
 	);
@@ -73,6 +75,10 @@ export function AuthContextProvider({ children }) {
 		currEmail,
 		error,
 		setError,
+		isMenuOpen,
+		setIsMenuOpen,
+		modalMode,
+		setModalMode
 	};
 
 	return (

@@ -1,6 +1,7 @@
 import { Fragment, useState } from "react";
 import { useRef } from "react";
 import { useTimeMarks } from "../context/TimeMarksContext.jsx";
+import { useAuth } from "../context/AuthContext.jsx";
 import SaveModal from "./SaveModal.jsx";
 
 function TimeUnit({ handleLap, elapsedTimeRef, setLapHistoryState }) {
@@ -8,11 +9,18 @@ function TimeUnit({ handleLap, elapsedTimeRef, setLapHistoryState }) {
 	const [isTimeRunning, setIsTimeRunning] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
 
+	const { isLoggedIn, setIsMenuOpen, setModalMode } = useAuth()
+
 	const { handleSave } = useTimeMarks();
 
 	function handleSaveClick() {
-		isTimeRunning && handleStop();
-		setIsOpen(true);
+		if (isLoggedIn){
+			isTimeRunning && handleStop();
+			setIsOpen(true);
+		} else {
+			setModalMode("login")
+			setIsMenuOpen(true)
+		}
 	}
 
 	const timeInterval = useRef();
@@ -163,6 +171,7 @@ function TimeUnit({ handleLap, elapsedTimeRef, setLapHistoryState }) {
 						<button
 							onClick={handleSaveClick}
 							className="bg-[#454545] hover:bg-[#707070] rounded p-2 sm:p-3 md:p-3.5 m-1 sm:m-2 cursor-pointer disabled:cursor-not-allowed w-16 sm:w-24 md:w-36"
+							
 						>
 							<img src="/saveSvg.svg" alt="" />
 						</button>

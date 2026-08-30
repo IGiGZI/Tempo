@@ -1,14 +1,18 @@
 import { useAuth } from "../context/AuthContext";
 import { Link, NavLink } from "react-router";
-import { useState } from "react";
 import AuthModal from "./AuthModal";
 import UserIcon from "../assets/icons/userProfile.svg?react";
 
 function Navbar() {
-	const { isLoggedIn, currEmail, logoutFn } = useAuth();
-
-	const [modalMode, setModalMode] = useState(null);
-	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const {
+		isLoggedIn,
+		currEmail,
+		logoutFn,
+		isMenuOpen,
+		setIsMenuOpen,
+		modalMode,
+		setModalMode,
+	} = useAuth();
 
 	function handleOpenModal(identifier) {
 		setModalMode(identifier);
@@ -72,7 +76,10 @@ function Navbar() {
 					{isLoggedIn && (
 						<div className="flex items-center gap-3.5">
 							<div className="border-2 border-[#454545] p-2 rounded hover:border-[#00C39A] transition duration-300">
-								<Link to={"/profile"} className="flex items-center gap-2">
+								<Link
+									to={"/profile"}
+									className="flex items-center gap-2"
+								>
 									<UserIcon className="w-8 h-8 text-[#454545] transition duration-300" />
 									<p className="text-white">{currEmail}</p>
 								</Link>
@@ -125,7 +132,10 @@ function Navbar() {
 							About
 						</p>
 					</NavLink>
-					<NavLink to={"/contact"} onClick={() => setIsMenuOpen(false)}>
+					<NavLink
+						to={"/contact"}
+						onClick={() => setIsMenuOpen(false)}
+					>
 						<p className="hover:text-[#00C39A] transition duration-300 text-xl">
 							Contact
 						</p>
@@ -157,7 +167,9 @@ function Navbar() {
 										className="flex items-center gap-2"
 									>
 										<UserIcon className="w-8 h-8 text-[#454545] transition duration-300" />
-										<p className="text-white">{currEmail}</p>
+										<p className="text-white">
+											{currEmail}
+										</p>
 									</Link>
 								</div>
 

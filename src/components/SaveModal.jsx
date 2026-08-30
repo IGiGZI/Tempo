@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 function SaveModal({ isOpen, setIsOpen, onSave, elapsedTimeRef }) {
 	const textAreaRef = useRef();
 	const [saveStatus, setSaveStatus] = useState(null);
+	const [modalLoader, setmodalLoader] = useState(3);
 
 	async function handleSave() {
 		try {
@@ -12,6 +13,17 @@ function SaveModal({ isOpen, setIsOpen, onSave, elapsedTimeRef }) {
 				note: textAreaRef.current.value,
 			});
 			setSaveStatus("Saved successfully!");
+
+			const closingInterval = setInterval(() => {
+				setmodalLoader((prev) => {
+					if (prev === 0) {
+						clearInterval(closingInterval);
+						setIsOpen(false)
+					}
+					return prev - 1;
+				});
+			}, 1000);
+
 		} catch (err) {
 			console.log(err);
 			setSaveStatus("Error, Could not save.");
@@ -33,7 +45,9 @@ function SaveModal({ isOpen, setIsOpen, onSave, elapsedTimeRef }) {
 					className="border-3 border-[#000000] outline-0 p-3 rounded-xl w-full mb-6"
 				></textarea>
 				{saveStatus === "Saved successfully!" && (
-					<p className="mb-6 text-green-500">Saved successfully!</p>
+					<p className="mb-6 text-green-500">
+						Saved successfully! Closing in {modalLoader}s.
+					</p>
 				)}
 				{saveStatus === "Error, Could not save." && (
 					<p className="mb-6 text-red-500">Error, Could not save.</p>
