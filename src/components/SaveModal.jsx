@@ -1,17 +1,24 @@
 import Modal from "./Modal";
 import { useRef, useState } from "react";
+import { useLaps } from "../context/LapContext";
 
-function SaveModal({ isOpen, setIsOpen, onSave, elapsedTimeRef }) {
+function SaveModal({ isOpen, setIsOpen, onSave, elapsedTimeRef, lapHistoryState }) {
 	const textAreaRef = useRef();
 	const [saveStatus, setSaveStatus] = useState(null);
 	const [modalLoader, setmodalLoader] = useState(3);
 
+	const { handleSaveLap } = useLaps()
+
 	async function handleSave() {
 		try {
-			await onSave({
+			const savedTimeMark = await onSave({
 				duration: elapsedTimeRef.current,
 				note: textAreaRef.current.value,
 			});
+
+			for (const lap of lapHistoryState){
+				await handleSaveLap({})
+			}
 			setSaveStatus("Saved successfully!");
 
 			const closingInterval = setInterval(() => {

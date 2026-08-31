@@ -43,6 +43,7 @@ function Stopwatch() {
 					handleLap={handleLap}
 					elapsedTimeRef={elapsedTimeRef}
 					setLapHistoryState={setLapHistoryState}
+					lapHistoryState={lapHistoryState}
 				/>
 			</div>
 			<div className="w-full max-w-2xl text-center m-auto px-4">

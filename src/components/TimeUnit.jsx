@@ -4,7 +4,7 @@ import { useTimeMarks } from "../context/TimeMarksContext.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
 import SaveModal from "./SaveModal.jsx";
 
-function TimeUnit({ handleLap, elapsedTimeRef, setLapHistoryState }) {
+function TimeUnit({ handleLap, elapsedTimeRef, setLapHistoryState, lapHistoryState }) {
 	const [timeState, setTimeState] = useState(0);
 	const [isTimeRunning, setIsTimeRunning] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
@@ -184,6 +184,7 @@ function TimeUnit({ handleLap, elapsedTimeRef, setLapHistoryState }) {
 				setIsOpen={setIsOpen}
 				onSave={handleSave}
 				elapsedTimeRef={elapsedTimeRef}
+				lapHistoryState={lapHistoryState}
 			/>
 		</>
 	);

@@ -50,6 +50,7 @@ function Lap({ lapHistoryState, setLapHistoryState }) {
 			>
 				<div>
 					<p className="text-lg">Lap NO.</p>
+					{/* Lap NO. */}
 					<p>{index + 1}</p>
 				</div>
 				<div>
