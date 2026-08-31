@@ -6,13 +6,13 @@ export const timeMarksCtx = createContext();
 export function TimeMarkContextProvider({ children }) {
 	const [timeMarks, setTimeMarks] = useState([]);
 
-	async function handleSave({ duration, note }) {
+	async function handleSave({ duration, note, laps }) {
     // console.log(`handleSave fired`);
-		const response = await createTimeMark({ duration, note });
+		const response = await createTimeMark({ duration, note, laps });
 		setTimeMarks((prevTimemarks) => {
 			return [
 				...prevTimemarks,
-				{ duration: response.duration, note: response.note },
+				{ duration: response.duration, note: response.note, laps: response.laps },
 			];
 		});
 		return response

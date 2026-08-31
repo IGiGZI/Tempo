@@ -1,41 +1,47 @@
 import Modal from "./Modal";
 import { useRef, useState } from "react";
-import { useLaps } from "../context/LapContext";
 
-function SaveModal({ isOpen, setIsOpen, onSave, elapsedTimeRef, lapHistoryState }) {
+function SaveModal({
+	isOpen,
+	setIsOpen,
+	onSave,
+	elapsedTimeRef,
+	lapHistoryState,
+}) {
 	const textAreaRef = useRef();
 	const [saveStatus, setSaveStatus] = useState(null);
 	const [modalLoader, setmodalLoader] = useState(3);
 
-	const { handleSaveLap } = useLaps()
+async function handleSave() {
+	try {
+		const laps = lapHistoryState.map((lap) => ({
+			lapNum: lap.lapNum,
+			lapDiff: lap.lapDiff,
+			lapTime: lap.totalElapsedMs,
+		}));
 
-	async function handleSave() {
-		try {
-			const savedTimeMark = await onSave({
-				duration: elapsedTimeRef.current,
-				note: textAreaRef.current.value,
+		const savedTimeMark = await onSave({
+			duration: elapsedTimeRef.current,
+			note: textAreaRef.current.value,
+			laps,
+		});
+
+		setSaveStatus("Saved successfully!");
+
+		const closingInterval = setInterval(() => {
+			setmodalLoader((prev) => {
+				if (prev === 0) {
+					clearInterval(closingInterval);
+					setIsOpen(false);
+				}
+				return prev - 1;
 			});
-
-			for (const lap of lapHistoryState){
-				await handleSaveLap({})
-			}
-			setSaveStatus("Saved successfully!");
-
-			const closingInterval = setInterval(() => {
-				setmodalLoader((prev) => {
-					if (prev === 0) {
-						clearInterval(closingInterval);
-						setIsOpen(false)
-					}
-					return prev - 1;
-				});
-			}, 1000);
-
-		} catch (err) {
-			console.log(err);
-			setSaveStatus("Error, Could not save.");
-		}
+		}, 1000);
+	} catch (err) {
+		console.log(err);
+		setSaveStatus("Error, Could not save.");
 	}
+}
 
 	return (
 		<Modal

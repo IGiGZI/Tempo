@@ -28,6 +28,8 @@ function Stopwatch() {
 					minutes: minutes,
 					seconds: seconds,
 					centisec: centisec,
+					lapNum: prevValues.length + 1,
+					lapDiff: elapsedTimeRef.current - (prevValues[prevValues.length - 1]?.totalElapsedMs ?? 0)
 				},
 			];
 			console.log(`Next line is updated lap history`);

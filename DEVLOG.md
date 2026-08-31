@@ -5,7 +5,8 @@ A running log of changes, decisions, and what's left to do.
 ---
 
 ### Added
-
+  #### 8/31/26
+  - Added lap saving.
 
 ### Changed
   
@@ -13,12 +14,11 @@ A running log of changes, decisions, and what's left to do.
 ### Fixed
 
 ### Pending changes
-  #### 8/31/26
-  - Started working on the lap saving feature.
+ 
 
 ### To Do (PRIORITY)
-- [ ] Add lap saving.
 - [ ] Fix formatting after writing the note to save the spaces.
+- [ ] What happens if i close the save modal before the it auto closes?
 ### To Do (Optional)
 - [ ] Add new account features.
 - [ ] Add sign up with Google.
