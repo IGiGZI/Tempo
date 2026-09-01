@@ -41,11 +41,11 @@ function ProfilePage() {
 						Time marks Saved
 					</h1>
 					{timeMarks ? (
-						<div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+						<div className="max-w-6xl mx-auto columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-5">
 							{timeMarks.map((timeMark, index) => {
 								return (
 									<div
-										className="bg-[#707070] rounded-2xl border border-white/10 shadow-lg shadow-black/30 p-5 text-center flex flex-col"
+										className="break-inside-avoid mb-5 bg-[#707070] rounded-2xl border border-white/10 shadow-lg shadow-black/30 py-5 px-2 text-center flex flex-col"
 										key={timeMark._id ?? index}
 									>
 										<h1 className="text-xl font-semibold mb-3 tracking-wide">
@@ -56,15 +56,21 @@ function ProfilePage() {
 												timeMark.duration,
 											)}
 										</p>
+
 										{timeMark.note && (
-											<p className="text-sm mb-3 text-white/80">
-												Saved note : {timeMark.note}
-											</p>
+											<div className="mb-4 text-left">
+												<p className="text-sm text-white/80 mb-1.5">
+													Saved note:
+												</p>
+												<div className="bg-[#454545] rounded-lg p-2.5 text-sm break-words">
+													{timeMark.note}
+												</div>
+											</div>
 										)}
 
 										{timeMark.laps &&
 											timeMark.laps.length > 0 && (
-												<div className="flex flex-col gap-2 mb-4">
+												<div className="flex flex-col gap-2 mb-4 max-h-56 overflow-y-auto pr-1">
 													{timeMark.laps.map(
 														(lap, lapIndex) => {
 															const previousLapDiff =
@@ -100,7 +106,7 @@ function ProfilePage() {
 																	key={
 																		lap.lapNum
 																	}
-																	className="bg-[#454545] rounded-lg p-2.5 text-sm flex justify-between items-center"
+																	className="bg-[#454545] rounded-lg p-2.5 text-sm flex justify-between items-center shrink-0"
 																>
 																	<span className="text-base">
 																		Lap{" "}

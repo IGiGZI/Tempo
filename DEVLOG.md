@@ -5,11 +5,11 @@ A running log of changes, decisions, and what's left to do.
 ---
 
 ### Added
-  #### 8/31/26
-  - Added lap saving.
+
 
 ### Changed
-  
+  #### 9/1/26
+  - Changed saved time marks UI
 
 ### Fixed
 
