@@ -1,5 +1,9 @@
 import { createContext, useState, useContext } from "react";
-import { login as loginFn, signup as signupFn } from "../api/auth";
+import {
+	login as loginFn,
+	signup as signupFn,
+	googleLogin as googleLoginApi,
+} from "../api/auth";
 import { useNavigate } from "react-router";
 
 export const authContext = createContext();
@@ -7,14 +11,14 @@ export const authContext = createContext();
 export function AuthContextProvider({ children }) {
 	const [token, setToken] = useState(() => localStorage.getItem("token"));
 	const [isLoading, setIsloading] = useState();
-	const [error, setError] = useState(null)
+	const [error, setError] = useState(null);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [modalMode, setModalMode] = useState(null);
 	const [currEmail, setCurrEmail] = useState(() =>
 		localStorage.getItem("email"),
 	);
 
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 	const isLoggedIn = token ? true : false;
 
 	// console.log(token);
@@ -25,7 +29,7 @@ export function AuthContextProvider({ children }) {
 		setToken(null);
 		localStorage.removeItem("email");
 		setCurrEmail(null);
-		navigate("/")
+		navigate("/");
 	}
 
 	async function login(email, password) {
@@ -38,7 +42,26 @@ export function AuthContextProvider({ children }) {
 			setCurrEmail(response.user.email);
 		} catch (err) {
 			console.error(`Login Failed.`);
-			setError(err.message)
+			setError(err.message);
+			console.log(`Next line is the error message`);
+			console.log(err.message);
+			throw err;
+		} finally {
+			setIsloading(false);
+		}
+	}
+
+	async function googleLoginFn(idToken) {
+		try {
+			setIsloading(true);
+			const response = await googleLoginApi(idToken);
+			localStorage.setItem("token", response.token);
+			setToken(response.token);
+			localStorage.setItem("email", response.user.email);
+			setCurrEmail(response.user.email);
+		} catch (err) {
+			console.error(`Login Failed.`);
+			setError(err.message);
 			console.log(`Next line is the error message`);
 			console.log(err.message);
 			throw err;
@@ -57,7 +80,7 @@ export function AuthContextProvider({ children }) {
 			localStorage.setItem("email", response.user.email);
 		} catch (err) {
 			console.error(`Signup Failed.`);
-			setError(err.message)
+			setError(err.message);
 			throw err;
 		} finally {
 			setIsloading(false);
@@ -78,7 +101,8 @@ export function AuthContextProvider({ children }) {
 		isMenuOpen,
 		setIsMenuOpen,
 		modalMode,
-		setModalMode
+		setModalMode,
+		googleLoginFn
 	};
 
 	return (
