@@ -36,7 +36,17 @@ The app will be running locally at `http://localhost:5173` (or whichever port Vi
 
 ## 📸 Screenshots
 
+**The home page with the timer running and some laps.**
+
 <img width="1906" height="935" alt="image" src="https://github.com/user-attachments/assets/e851a44f-cc6e-417b-8477-28fbdb6ba212" />
+
+=============================
+
+**The profile page displaying the user's saved time marks + laps + the optional note.**
+
+<img width="1899" height="935" alt="image" src="https://github.com/user-attachments/assets/89c1449c-4318-4a10-a721-bd095588713a" />
+
+
 
 
 *(Add a screenshot or GIF of the app here once the UI is finalized)*
