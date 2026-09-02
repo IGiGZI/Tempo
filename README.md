@@ -8,6 +8,7 @@ A clean, Feature-rich stopwatch built with React, Vite, and Tailwind CSS — cre
 - 🏁 Lap recording & lap resetting
 - 📊 Lap-to-lap time difference calculation
 - 💾 Time marks for saving a certain time mark after stopping the timer
+- ⌚ Lap saving included within the time mark.
 - 📝 Adding an optional note to the saved time mark
 
 ## 🛠️ Tech Stack
@@ -16,8 +17,6 @@ A clean, Feature-rich stopwatch built with React, Vite, and Tailwind CSS — cre
 - **Tailwind CSS**
 - **Node.js + Express.js server backend**
 - **MongoDB database**
-- **React router**
-- *(Add here once decided: React Router, React Query, backend/DB, etc.)*
 
 ## 🚀 Getting Started
 
@@ -42,15 +41,6 @@ The app will be running locally at `http://localhost:5173` (or whichever port Vi
 ## 🌐 Live Demo
 
 *(Add your Vercel deployment link here once live)*
-
-## 📚 What I Learned / Practiced
-
-- Core React concepts (state management, props, JSX, custom hooks and so much more)
-- `useRef()` for timer logic
-- `useContext()` to avoid prop-drilling
-- `createPortal()` for Modal design
-- Frontend ↔ backend communication
-- Component composition & optimization
 
 ## 🤖 AI Usage Disclaimer
 
