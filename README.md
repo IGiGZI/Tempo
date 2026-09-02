@@ -26,6 +26,19 @@ Clone the repo and install dependencies:
 git clone https://github.com/IGiGZI/Tempo.git
 cd tempo
 npm install
+```
+
+Create a .env file in the root directory and put these inside:
+
+```bash
+VITE_API_URL=http://localhost:5000/api
+VITE_GOOGLE_CLIENT_ID=your_google_client_id
+```
+
+
+Run the project from the tempo directory:
+
+```bash
 npm run dev
 ```
 
