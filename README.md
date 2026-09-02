@@ -36,6 +36,9 @@ The app will be running locally at `http://localhost:5173` (or whichever port Vi
 
 ## 📸 Screenshots
 
+<img width="1906" height="935" alt="image" src="https://github.com/user-attachments/assets/e851a44f-cc6e-417b-8477-28fbdb6ba212" />
+
+
 *(Add a screenshot or GIF of the app here once the UI is finalized)*
 
 ## 🌐 Live Demo
