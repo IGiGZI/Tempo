@@ -1,10 +1,26 @@
 import { useAuth } from "../context/AuthContext";
 import { useRef } from "react";
-import { GoogleLogin } from "@react-oauth/google";
+import { useGoogleLogin } from "@react-oauth/google";
 import Modal from "./Modal";
 
 function AuthModal({ modalMode, setModalMode }) {
 	const { login, signup, googleLoginFn, error, setError } = useAuth();
+
+	const googleLogin = useGoogleLogin({
+		flow: "implicit",
+		onSuccess: async (tokenResponse) => {
+			try {
+				await googleLoginFn(tokenResponse.access_token);
+				handleCloseModal();
+			} catch (err) {
+				console.log(err);
+			}
+		},
+		onError: () => {
+			console.log("Google login failed");
+		},
+	});
+
 	function handleCloseModal() {
 		setModalMode(null);
 		setError(null);
@@ -29,15 +45,6 @@ function AuthModal({ modalMode, setModalMode }) {
 			} catch (err) {
 				console.log(err);
 			}
-		}
-	}
-
-	async function handleGoogleSuccess(credentialResponse) {
-		try {
-			await googleLoginFn(credentialResponse.credential);
-			handleCloseModal();
-		} catch (err) {
-			console.log(err);
 		}
 	}
 
@@ -98,12 +105,17 @@ function AuthModal({ modalMode, setModalMode }) {
 						{modalMode === "login" ? "Log in" : "Sign up"}
 					</button>
 					<div className="flex justify-center">
-						<GoogleLogin
-							onSuccess={handleGoogleSuccess}
-							onError={() => {
-								console.log("Google login failed");
-							}}
-						/>
+						<button
+							onClick={() => googleLogin()}
+							className="flex items-center justify-center gap-2 bg-white hover:bg-gray-100 text-black rounded-2xl p-3 sm:p-3.5 cursor-pointer w-full font-semibold text-base sm:text-lg"
+						>
+							<img
+								src="googleIcon.svg"
+								alt=""
+								className="w-5 h-5"
+							/>
+							Log in with Google
+						</button>
 					</div>
 				</div>
 			</div>

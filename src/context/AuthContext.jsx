@@ -51,10 +51,10 @@ export function AuthContextProvider({ children }) {
 		}
 	}
 
-	async function googleLoginFn(idToken) {
+	async function googleLoginFn(accessToken) {
 		try {
 			setIsloading(true);
-			const response = await googleLoginApi(idToken);
+			const response = await googleLoginApi(accessToken);
 			localStorage.setItem("token", response.token);
 			setToken(response.token);
 			localStorage.setItem("email", response.user.email);

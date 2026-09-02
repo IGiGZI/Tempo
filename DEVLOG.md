@@ -9,8 +9,11 @@ A running log of changes, decisions, and what's left to do.
   - Added google authentication.
 
 ### Changed
-  #### 9/1/26
-  - Changed saved time marks UI.
+  #### 9/2/26
+  - Changed Google login button UI
+  - Changed Google authentication logic to match the new UI 
+    - to the change the button UI I had to swap the built-in google button with my own styled button and implicitly write
+      the authentication code using the useGoogleLogin hook
 
 ### Fixed
 

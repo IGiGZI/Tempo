@@ -14,9 +14,9 @@ export function login(email, password) {
   });
 }
 
-export function googleLogin(idToken) {
+export function googleLogin(accessToken) {
   return request("/auth/google", {
     method: "POST",
-    body: JSON.stringify({ idToken }),
+    body: JSON.stringify({ accessToken }),
   });
 }
