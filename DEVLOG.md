@@ -18,12 +18,16 @@ A running log of changes, decisions, and what's left to do.
 ### Fixed
 
 ### Pending changes
+  #### 9/3/26
+  - Ongoing Issue (severity: light): 
+    The timer on the save modal sometimes glitches.
  
 
 ### To Do (PRIORITY)
 
-### To Do (Optional)
+### To Do (Optional & continious)
 - [ ] Add new account features.
+- [ ] Add docker.
 - [ ] Change UI (icons, animations, saved time marks display and so much more).
 
 ---

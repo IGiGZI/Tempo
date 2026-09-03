@@ -38,7 +38,7 @@ function ProfilePage() {
 			<main className="mt-12 px-4">
 				<div>
 					<h1 className="text-center text-4xl sm:text-6xl mb-12 sm:mb-22">
-						Time marks Saved
+						Saved time marks
 					</h1>
 					{timeMarks ? (
 						<div className="max-w-6xl mx-auto columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-5">
